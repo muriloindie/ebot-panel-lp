@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Camada_2" data-name="Camada 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 433.26 173.3">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3 {
+        fill: #9abc1e;
+      }
+
+      .cls-1, .cls-3, .cls-4 {
+        font-family: CocogooseProTrial-Bold, CocogooseProTrial;
+        font-weight: 700;
+      }
+
+      .cls-1, .cls-4 {
+        font-size: 71.31px;
+      }
+
+      .cls-5 {
+        fill: #fff;
+      }
+
+      .cls-6 {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .cls-6, .cls-2 {
+        stroke: #3f4b48;
+        stroke-width: 20px;
+      }
+
+      .cls-6, .cls-4 {
+        fill: #3f4b48;
+      }
+
+      .cls-2 {
+        stroke-miterlimit: 66.67;
+      }
+
+      .cls-7 {
+        letter-spacing: -.1em;
+      }
+
+      .cls-3 {
+        font-size: 42px;
+      }
+    </style>
+  </defs>
+  <g id="Logo_clinical_black_aplicação_1">
+    <path class="cls-2" d="M44.86,28.28h129.49c5.5,0,9.96,4.5,9.96,10.06v100.6c0,5.56-4.46,10.06-9.96,10.06H44.86c-5.5,0-9.96-4.5-9.96-10.06V38.34c0-5.56-44.82-54.03,9.96-10.06Z"/>
+    <ellipse class="cls-5" cx="74.74" cy="68.52" rx="9.96" ry="10.06"/>
+    <ellipse class="cls-5" cx="144.47" cy="68.52" rx="9.96" ry="10.06"/>
+    <path class="cls-6" d="M10,68.52v40.24"/>
+    <path class="cls-6" d="M209.21,68.52v40.24"/>
+    <path class="cls-5" d="M105.23,98.51s-13.42-.71-22.24-3.18-10.31,10.07-8.24,13.42,12.41,6.53,34.86,6.53,33.68-2.65,34.86-8.65c1.19-6-2.39-14.94-9.96-11.62-7.57,3.32-9.51,3.5-29.28,3.5Z"/>
+    <text class="cls-4" transform="translate(292.08 94.3)"><tspan x="0" y="0">bot</tspan></text>
+    <text class="cls-3" transform="translate(243.81 143.99)"><tspan x="0" y="0">&lt;</tspan><tspan class="cls-7" x="24.48" y="0">P</tspan><tspan x="48.57" y="0">ANEL&gt;</tspan></text>
+    <text class="cls-1" transform="translate(241.82 94.3)"><tspan x="0" y="0">ê</tspan></text>
+  </g>
+</svg>

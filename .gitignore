@@ -1,0 +1,44 @@
+# Python
+*.py
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Arquivos de sistema
+.DS_Store
+Thumbs.db
+*.log
+
+# Node/npm
+node_modules/
+package-lock.json
+
+# Python virtual env
+venv/
+env/
+.venv/
+
+# Environment variables - NUNCA commit estas chaves!
+.env
+.env.local
+.env.production
+.env.*.local
+
+# Documentação de scripts
+documentação/
+
+# Backups
+*.bak
+*.backup
+*~
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Docker test
+test-docker.sh

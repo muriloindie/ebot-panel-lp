@@ -1,0 +1,36 @@
+:root {
+  /* Colors */
+  --primary: #88a72f;
+  --primary-hover: #759226;
+  --primary-light: rgba(136, 167, 47, 0.1);
+  --secondary: #2B9FE8;
+  --secondary-hover: #1a7ebc;
+  --secondary-light: rgba(43, 159, 232, 0.1);
+  --dark: #3c4844;
+  --dark-header: #2f3835;
+  --text-body: #666666;
+  --bg-light: #F5F5F5;
+  --bg-white: #FFFFFF;
+  --border-subtle: rgba(0, 0, 0, 0.08);
+
+  /* Typography */
+  --font-main: 'Inter', sans-serif;
+  --font-brand: 'Cocogoose Pro Bold', sans-serif;
+  
+  /* Spacing */
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 3rem;
+  --space-xxl: 6rem;
+
+  /* Misc */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --shadow-soft: 0 8px 32px rgba(0,0,0,0.08);
+  --shadow-hover: 0 16px 48px rgba(0,0,0,0.12);
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}

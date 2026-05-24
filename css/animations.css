@@ -1,0 +1,116 @@
+/* Keyframes */
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes pulse-glow {
+  0% { box-shadow: 0 0 0 0 rgba(136, 167, 47, 0.4); }
+  70% { box-shadow: 0 0 0 20px rgba(136, 167, 47, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(136, 167, 47, 0); }
+}
+
+/* Intersection Observer Reveal Classes */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal.reveal-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left { transform: translateX(-40px); }
+.reveal-right { transform: translateX(40px); }
+
+.reveal-left.reveal-active, .reveal-right.reveal-active {
+  transform: translateX(0);
+}
+
+.stagger-1 { transition-delay: 0.1s; }
+.stagger-2 { transition-delay: 0.2s; }
+.stagger-3 { transition-delay: 0.3s; }
+.stagger-4 { transition-delay: 0.4s; }
+
+/* Utility animations */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse {
+  animation: pulse-glow 2s infinite;
+}
+
+/* CHAT BUBBLE & DASHBOARD FLUID ANIMATIONS */
+.chat-bubble {
+  opacity: 0;
+  transform: translateY(15px) scale(0.95);
+  animation: bubblePop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.chat-bubble-1 { animation-delay: 0.5s; }
+.chat-bubble-2 { animation-delay: 2.0s; }
+.chat-bubble-3 { animation-delay: 3.5s; }
+
+@keyframes bubblePop {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.typing-indicator {
+  display: none;
+  gap: 4px;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
+  background: white;
+  border-radius: 12px;
+  border-bottom-left-radius: 2px;
+  width: fit-content;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  opacity: 0;
+}
+
+.typing-indicator span {
+  width: 6px;
+  height: 6px;
+  background: var(--primary);
+  border-radius: 50%;
+  animation: bounce 1.4s infinite ease-in-out both;
+}
+.typing-indicator span:nth-child(1) { animation-delay: -0.32s; }
+.typing-indicator span:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes showTyping { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes hideTyping { to { opacity: 0; display: none; } }
+@keyframes bounce { 0%, 80%, 100% { transform: scale(0); } 40% { transform: scale(1); } }
+
+/* DASHBOARD MOCKUP ANIMATION */
+.dash-skeleton {
+  position: relative;
+  overflow: hidden;
+}
+.dash-skeleton::after {
+  content: "";
+  position: absolute;
+  top: 0; left: -100%;
+  width: 50%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  animation: shineSweep 2.5s infinite linear;
+}
+
+@keyframes shineSweep {
+  100% { left: 150%; }
+}
+
+.float-hover {
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.float-hover:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 32px 64px rgba(136, 167, 47, 0.15);
+}
