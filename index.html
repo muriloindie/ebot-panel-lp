@@ -13,7 +13,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Bungee&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/variables.css">
@@ -23,6 +23,7 @@
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/dashboard-mock.css">
   <link rel="stylesheet" href="assets/vendor/swiper-bundle.min.css">
 
   <style>
@@ -111,7 +112,34 @@
       -webkit-backdrop-filter: blur(22px);
     }
 
+    /* Fonte customizada Cocogoose (logo) — precisa ser carregada pelo documento,
+       pois um <img> de SVG não consegue resolver @font-face externo. */
+    @font-face {
+      font-family: "CocogooseProTrial";
+      src: url("./fonts/font-ebot-logo/Cocogoose-Pro-Regular-trial.ttf") format("truetype");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "CocogooseProTrial-Bold";
+      src: url("./fonts/font-ebot-logo/Cocogoose-Pro-Bold-trial.ttf") format("truetype");
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+
     .lp-logo img { height: 44px; width: auto; display: block; }
+
+    .lp-logo svg.lp-logo-mark { height: 44px; width: auto; display: block; }
+
+    .lp-logo svg.lp-logo-mark text {
+      font-family: "CocogooseProTrial-Bold", "CocogooseProTrial", "Trebuchet MS", sans-serif;
+      font-weight: 700;
+    }
+
+    .lp-logo svg.lp-logo-mark .wm-kern { letter-spacing: -0.1em; }
 
     .lp-nav a {
       color: rgba(20, 32, 29, 0.72);
@@ -492,6 +520,13 @@
     .section-heading { max-width: 880px; font-size: clamp(2.2rem, 4.7vw, 4.65rem); line-height: 0.98; letter-spacing: -0.055em; text-wrap: balance; }
     .section-lead { max-width: 720px; margin-top: 1.35rem; color: var(--muted); font-size: 1.12rem; line-height: 1.75; }
 
+    .panel-topline { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem; margin-bottom: 0.35rem; }
+    .pill-new { display: inline-flex; align-items: center; gap: 0.45rem; padding: 0.42rem 0.8rem; border-radius: 999px; background: var(--dark); color: #d7ed95; font-size: 0.72rem; font-weight: 850; letter-spacing: 0.06em; text-transform: uppercase; box-shadow: 0 14px 32px rgba(47, 56, 53, 0.2); }
+    .pill-new::before { content: ""; width: 0.5rem; height: 0.5rem; border-radius: 50%; background: var(--whatsapp); animation: livePulse 2s infinite; }
+    .feature-flag { position: absolute; top: 1.15rem; right: 1.15rem; padding: 0.3rem 0.62rem; border-radius: 999px; background: var(--primary-light); color: var(--primary); font-size: 0.66rem; font-weight: 850; letter-spacing: 0.06em; text-transform: uppercase; }
+    .feature-flag--inline { position: static; display: inline-block; margin-left: 0.5rem; padding: 0.18rem 0.55rem; font-size: 0.58rem; vertical-align: 0.3em; background: rgba(136,167,47,0.16); color: var(--primary); border: 1px solid rgba(136,167,47,0.3); }
+    .panel-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; margin-top: 1.75rem; }
+
     .pain-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 1rem; margin-top: 3rem; }
     .pain-card { position: relative; overflow: hidden; padding: clamp(1.4rem, 3vw, 2.4rem); border: 1px solid rgba(255,255,255,0.08); border-radius: 1.55rem; background: radial-gradient(circle at 85% 20%, rgba(136,167,47,0.16), transparent 18rem), linear-gradient(145deg, #2f3835, #17211f); box-shadow: 0 30px 80px rgba(23,33,31,0.22); }
     .pain-card h3 { margin-bottom: 0.65rem; font-size: 1.35rem; color: #f7faef; }
@@ -521,7 +556,7 @@
 
     .feature-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 3rem; }
     .feature-card { position: relative; min-height: 255px; overflow: hidden; border-radius: 1.55rem; padding: 1.35rem; }
-    .feature-card:nth-child(1), .feature-card:nth-child(4) { grid-column: span 2; }
+    .feature-card:nth-child(1), .feature-card:nth-child(4), .feature-card:nth-child(7) { grid-column: span 2; }
     .feature-card h3, .sector-card h3 { margin-bottom: 0.65rem; font-size: 1.35rem; }
     .feature-card p, .sector-card p { color: var(--muted); line-height: 1.65; }
 
@@ -743,7 +778,7 @@
         transform: none !important;
       }
       .feature-grid { grid-template-columns: repeat(2, 1fr); }
-      .feature-card:nth-child(1), .feature-card:nth-child(4) { grid-column: span 1; }
+      .feature-card:nth-child(1), .feature-card:nth-child(4), .feature-card:nth-child(7) { grid-column: span 1; }
       .sector-grid { grid-template-columns: 1fr; }
       .operation-media-grid { grid-template-columns: 1fr; }
       .operation-media-grid .video-card video { min-height: 280px; height: clamp(260px, 52vw, 430px); }
@@ -840,11 +875,25 @@
 
   <header class="lp-header glass-header">
     <div class="container header-inner">
-      <a class="lp-logo" href="index.html" aria-label="Ê-Bot Home"><img src="./assets/images/logos_ebot/ebot_panel/SVG/Logo_panel_aplicação_1_black.svg" alt="Ê-Bot Panel"></a>
+      <a class="lp-logo" href="index.html" aria-label="Ê-Bot Home">
+        <svg class="lp-logo-mark" viewBox="0 0 433.26 173.3" role="img" aria-label="Ê-Bot Panel" focusable="false">
+          <title>Ê-Bot Panel</title>
+          <path fill="#9abc1e" stroke="#3f4b48" stroke-width="20" stroke-miterlimit="66.67" d="M44.86,28.28h129.49c5.5,0,9.96,4.5,9.96,10.06v100.6c0,5.56-4.46,10.06-9.96,10.06H44.86c-5.5,0-9.96-4.5-9.96-10.06V38.34c0-5.56-44.82-54.03,9.96-10.06Z"/>
+          <ellipse fill="#ffffff" cx="74.74" cy="68.52" rx="9.96" ry="10.06"/>
+          <ellipse fill="#ffffff" cx="144.47" cy="68.52" rx="9.96" ry="10.06"/>
+          <path fill="none" stroke="#3f4b48" stroke-width="20" stroke-linecap="round" stroke-linejoin="round" d="M10,68.52v40.24"/>
+          <path fill="none" stroke="#3f4b48" stroke-width="20" stroke-linecap="round" stroke-linejoin="round" d="M209.21,68.52v40.24"/>
+          <path fill="#ffffff" d="M105.23,98.51s-13.42-.71-22.24-3.18-10.31,10.07-8.24,13.42,12.41,6.53,34.86,6.53,33.68-2.65,34.86-8.65c1.19-6-2.39-14.94-9.96-11.62-7.57,3.32-9.51,3.5-29.28,3.5Z"/>
+          <text fill="#3f4b48" font-size="71.31" transform="translate(292.08 94.3)"><tspan x="0" y="0">bot</tspan></text>
+          <text fill="#9abc1e" font-size="42" transform="translate(243.81 143.99)"><tspan x="0" y="0">&lt;</tspan><tspan class="wm-kern" x="24.48" y="0">P</tspan><tspan x="48.57" y="0">ANEL&gt;</tspan></text>
+          <text fill="#9abc1e" font-size="71.31" transform="translate(241.82 94.3)"><tspan x="0" y="0">ê</tspan></text>
+        </svg>
+      </a>
       <nav class="lp-nav nav-menu" aria-label="Navegação principal">
         <ul class="flex gap-lg">
           <li><a href="#operacao">Operação</a></li>
           <li><a href="#panel">Panel</a></li>
+          <li><a href="#tour">Conheça o sistema</a></li>
           <li><a href="#api">API</a></li>
           <li><a href="#testimonials">Clientes</a></li>
         </ul>
@@ -953,16 +1002,1026 @@
 
     <section class="section surface-dots" id="panel">
       <div class="container reveal">
-        <span class="section-eyebrow">Ê-Bot Panel</span>
+        <div class="panel-topline">
+          <span class="section-eyebrow" style="margin-bottom: 0;">Ê-Bot Panel</span>
+          <span class="pill-new">Interface nova · redesign 2026</span>
+        </div>
         <h2 class="section-heading h2">A camada operacional para times comerciais, suporte e relacionamento.</h2>
-        <p class="section-lead">Organize conversas, distribua atendimentos, acompanhe o funil e dê contexto para cada pessoa da equipe antes de responder o cliente.</p>
+        <p class="section-lead">Organize conversas, distribua atendimentos, acompanhe o funil e dê contexto para cada pessoa da equipe antes de responder o cliente. Tudo em um painel com visual novo, tema claro/escuro e indicadores em tempo real.</p>
+
+        <div class="panel-cta">
+          <a class="btn btn-primary float-hover" href="#tour">Explorar o sistema por dentro</a>
+          <span class="text-small" style="color: var(--muted);">Navegue pelas telas reais: dashboard, atendimentos, Kanban, CRM e automações.</span>
+        </div>
+
         <div class="feature-grid">
-          <article class="feature-card"><div class="css-icon icon-kanban"></div><h3>Kanban SDR</h3><p>Leads entram no funil automaticamente, com etapas claras para qualificação, negociação, follow-up e fechamento.</p></article>
-          <article class="feature-card"><div class="css-icon icon-ai"></div><h3>Triagem com IA</h3><p>O bot entende intenção, responde dúvidas simples e transfere para humanos quando a conversa pede negociação.</p></article>
-          <article class="feature-card"><div class="css-icon icon-crm"></div><h3>Histórico central</h3><p>Cada contato preserva dados, mensagens, setor, responsável e status do atendimento.</p></article>
-          <article class="feature-card"><div class="css-icon icon-bi"></div><h3>Métricas gerenciais</h3><p>Tempo médio de resposta, volume por atendente, conversão por etapa e desempenho por departamento.</p></article>
-          <article class="feature-card"><div class="css-icon icon-multi"></div><h3>Multiatendimento</h3><p>Mais de uma pessoa atende pelo mesmo número sem perder rastreabilidade nem controle de fila.</p></article>
-          <article class="feature-card"><div class="css-icon icon-transfer"></div><h3>Transferência entre setores</h3><p>Comercial, suporte e financeiro trabalham na mesma jornada, sem recomeçar a conversa do zero.</p></article>
+          <article class="feature-card">
+            <div class="fs" aria-hidden="true">
+              <div class="fs-body">
+                <div class="fs-cols">
+                  <div class="fs-col">
+                    <span class="fs-col-head" style="--dot:#0E7A3E"><i></i>Novo<b class="fs-count fs-count--early"><span>2</span><span>1</span></b></span>
+                    <div class="fs-card"><span class="fs-id">#LD-2418</span><strong>Fibra 500 Mega residencial</strong><small><i class="fs-av">AP</i>Ana Paula · WhatsApp</small></div>
+                    <div class="fs-card fs-card--move"><span class="fs-id">#LD-2417</span><strong>Plano empresa 30 usuários</strong><small><i class="fs-av">RK</i>Rafael Kim</small></div>
+                  </div>
+                  <div class="fs-col">
+                    <span class="fs-col-head" style="--dot:#C97F12"><i></i>Em atendimento<b>4</b></span>
+                    <div class="fs-card"><span class="fs-id">#LD-2411</span><strong>Renovália energia · unidades</strong><small><i class="fs-av">PM</i>Paula Mendes</small></div>
+                    <div class="fs-card"><span class="fs-id">#LD-2409</span><strong>Suporte premium anual</strong><small><i class="fs-av">JS</i>João Sá</small></div>
+                  </div>
+                  <div class="fs-col">
+                    <span class="fs-col-head" style="--dot:#8FA9B4"><i></i>Aguardando<b class="fs-count"><span>1</span><span>2</span></b></span>
+                    <div class="fs-card"><span class="fs-id">#LD-2406</span><strong>Contrato de frota · 12 veículos</strong><small><i class="fs-av">MS</i>Marcos Silva</small></div>
+                    <div class="fs-slot"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <h3>Kanban SDR</h3><p>Leads entram no funil automaticamente, com etapas claras para qualificação, negociação, follow-up e fechamento.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="fs" aria-hidden="true">
+              <div class="fs-body fs-chat">
+                <div class="fs-msg fs-msg--in"><b>Ana Paula</b><span>Consigo antecipar a instalação?</span></div>
+                <div class="fs-msg fs-msg--type" aria-hidden="true"><i></i><i></i><i></i></div>
+                <div class="fs-msg fs-msg--ai"><b><iconify-icon icon="ph:robot"></iconify-icon> Ê-BOT · IA</b><span>Verifico a agenda agora. Qual o seu CEP?</span></div>
+                <div class="fs-msg fs-msg--out"><span>04171-030, aqui na Vila Mariana.</span></div>
+                <div class="fs-chips"><span class="fs-pill fs-pill--ok">IA resolveu</span><span class="fs-pill">transfere p/ humano</span></div>
+              </div>
+            </div>
+            <h3>Triagem com IA</h3><p>O bot entende intenção, responde dúvidas simples e transfere para humanos quando a conversa pede negociação.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="fs" aria-hidden="true">
+              <div class="fs-body fs-hist">
+                <div class="fs-contact">
+                  <i class="fs-av fs-av--lg">AP</i>
+                  <span><strong>Ana Paula</strong><small>WhatsApp · +55 11 98842-3170</small></span>
+                  <span class="fs-pill fs-pill--ok">AT-1101</span>
+                </div>
+                <div class="fs-tl">
+                  <div class="fs-tl-row"><i></i><span><strong>Transferido para Financeiro</strong><small>hoje 10:42 · contexto mantido</small></span></div>
+                  <div class="fs-tl-row"><i></i><span><strong>Resolvido pela IA</strong><small>ontem 19:08 · 2ª via de nota fiscal</small></span></div>
+                  <div class="fs-tl-row"><i></i><span><strong>Novo contato via WhatsApp</strong><small>12/09 · origem: campanha fibra</small></span></div>
+                </div>
+              </div>
+            </div>
+            <h3>Histórico central</h3><p>Cada contato preserva dados, mensagens, setor, responsável e status do atendimento.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="fs" aria-hidden="true">
+              <div class="fs-body fs-metrics">
+                <div class="fs-panel">
+                  <div class="fs-panel-head"><strong>Fluxo por hora</strong><span class="fs-legend"><i class="is-total"></i>Total<i class="is-ai"></i>IA</span></div>
+                  <svg class="fs-spark" viewBox="0 0 340 84" preserveAspectRatio="none" aria-hidden="true">
+                    <path class="fs-spark-area" d="M0,70 L20,64 L40,55 L60,45 L80,50 L100,58 L120,52 L140,44 L160,34 L180,36 L200,26 L220,14 L240,10 L260,22 L280,32 L300,44 L320,54 L340,62 L340,84 L0,84 Z"></path>
+                    <path class="fs-spark-line" d="M0,70 L20,64 L40,55 L60,45 L80,50 L100,58 L120,52 L140,44 L160,34 L180,36 L200,26 L220,14 L240,10 L260,22 L280,32 L300,44 L320,54 L340,62"></path>
+                  </svg>
+                </div>
+                <div class="fs-kpis">
+                  <div class="fs-kpi"><small>Tempo médio de resposta</small><b>18<em>s</em></b><span class="fs-pill fs-pill--down">-34%</span></div>
+                  <div class="fs-kpi"><small>Resolvidos pela IA</small><b>73<em>%</em></b><span class="fs-pill fs-pill--ok">+12%</span></div>
+                  <div class="fs-kpi"><small>Volume por atendente</small><b>96<em>/dia</em></b><span class="fs-pill fs-pill--ok">+8%</span></div>
+                </div>
+              </div>
+            </div>
+            <h3>Métricas gerenciais</h3><p>Tempo médio de resposta, volume por atendente, conversão por etapa e desempenho por departamento.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="fs" aria-hidden="true">
+              <div class="fs-body fs-chan">
+                <div class="fs-qhead"><strong>Caixa omnichannel</strong><span class="fs-avs"><i>RS</i><i>JP</i><i>ML</i></span></div>
+                <div class="fs-chan-bar">
+                  <span class="fs-chan-pill is-wa"><iconify-icon icon="ph:whatsapp-logo"></iconify-icon>WhatsApp<b>12</b></span>
+                  <span class="fs-chan-pill is-ig"><iconify-icon icon="ph:instagram-logo"></iconify-icon>Instagram<b>07</b></span>
+                  <span class="fs-chan-pill is-ms"><iconify-icon icon="ph:messenger-logo"></iconify-icon>Messenger<b>03</b></span>
+                  <span class="fs-chan-pill is-tg"><iconify-icon icon="ph:telegram-logo"></iconify-icon>Telegram<b>02</b></span>
+                </div>
+                <div class="fs-chan-msgs">
+                  <div class="fs-msg fs-msg--in"><b><i class="fs-chan-dot"></i>WhatsApp · Ana Paula</b><span>Vocês atendem por aqui também?</span></div>
+                  <div class="fs-msg fs-msg--ai"><b><iconify-icon icon="ph:robot"></iconify-icon> Ê-BOT · IA</b><span>Sim — Instagram, Messenger e Telegram no mesmo histórico.</span></div>
+                </div>
+              </div>
+            </div>
+            <h3>Multiatendimento</h3><p>Mais de uma pessoa atende pelo mesmo número sem perder rastreabilidade nem controle de fila.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="fs" aria-hidden="true">
+              <div class="fs-body fs-xfer">
+                <div class="fs-msg fs-msg--in"><b>Marcos Silva</b><span>Preciso do contrato de frota com 12 veículos.</span></div>
+                <div class="fs-xfer-row">
+                  <span class="fs-xfer-node"><i></i>Comercial</span>
+                  <iconify-icon icon="ph:arrows-left-right"></iconify-icon>
+                  <span class="fs-xfer-node is-target"><i></i>Frota</span>
+                </div>
+                <div class="fs-note"><iconify-icon icon="ph:check-circle"></iconify-icon>Contexto e histórico seguem junto</div>
+              </div>
+            </div>
+            <h3>Transferência entre setores</h3><p>Comercial, suporte e financeiro trabalham na mesma jornada, sem recomeçar a conversa do zero.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="fs" aria-hidden="true">
+              <div class="fs-body fs-live">
+                <div class="fs-live-head"><strong>Operação em tempo real</strong><span class="fs-now"><i></i>Ao vivo</span></div>
+                <div class="fs-feed">
+                  <div class="fs-feed-track">
+                    <div class="fs-feed-row"><i class="is-wa"></i><span><strong>WhatsApp · #AT-1104</strong><small>Rita assumiu a conversa de Camila Rocha</small></span><em>agora</em></div>
+                    <div class="fs-feed-row"><i class="is-ig"></i><span><strong>Instagram · direct</strong><small>“Plano empresa 30 usuários” · lead novo</small></span><em>12s</em></div>
+                    <div class="fs-feed-row"><i class="is-ai"></i><span><strong>IA · fora do SLA</strong><small>3 conversas acima do tempo esperado</small></span><em>40s</em></div>
+                    <div class="fs-feed-row"><i class="is-crm"></i><span><strong>CRM · #LD-2411</strong><small>Renovália avançou para Proposta</small></span><em>1 min</em></div>
+                    <div class="fs-feed-row"><i class="is-wa"></i><span><strong>WhatsApp · #AT-1104</strong><small>Rita assumiu a conversa de Camila Rocha</small></span><em>agora</em></div>
+                    <div class="fs-feed-row"><i class="is-ig"></i><span><strong>Instagram · direct</strong><small>“Plano empresa 30 usuários” · lead novo</small></span><em>12s</em></div>
+                    <div class="fs-feed-row"><i class="is-ai"></i><span><strong>IA · fora do SLA</strong><small>3 conversas acima do tempo esperado</small></span><em>40s</em></div>
+                    <div class="fs-feed-row"><i class="is-crm"></i><span><strong>CRM · #LD-2411</strong><small>Renovália avançou para Proposta</small></span><em>1 min</em></div>
+                  </div>
+                </div>
+                <div class="fs-live-bar"><i></i></div>
+                <div class="fs-foot"><i></i>Atualiza a cada 5 segundos · 17 ativos</div>
+              </div>
+            </div>
+            <h3>Operação em tempo real <span class="feature-flag feature-flag--inline">Novo</span></h3><p>Painel ao vivo com atendimentos ativos, fila por setor, leads sem responsável e a IA trabalhando — atualizado a cada poucos segundos.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="fs" aria-hidden="true">
+              <div class="fs-body fs-ai">
+                <div class="fs-ai-head"><strong><i class="fs-ai-orb"><iconify-icon icon="ph:sparkle"></iconify-icon></i>IA analisando</strong><em>24h · 1.284 conversas</em></div>
+                <div class="fs-ai-bar"><i></i></div>
+                <div class="fs-ai-list">
+                  <div class="fs-ai-row"><span><strong>Cobranças vencidas</strong><small>8 contas · dispare hoje</small></span><b>8</b></div>
+                  <div class="fs-ai-row"><span><strong>Leads parados</strong><small>há 3 dias sem resposta</small></span><b>5</b></div>
+                  <div class="fs-ai-row"><span><strong>Pico fora do horário</strong><small>19h às 21h · 62 conversas</small></span><b>62</b></div>
+                  <div class="fs-ai-row"><span><strong>Assunto recorrente</strong><small>“2ª via de nota” · 14x hoje</small></span><b>14</b></div>
+                </div>
+              </div>
+            </div>
+            <h3>Insights da IA <span class="feature-flag feature-flag--inline">Novo</span></h3><p>O sistema detecta oportunidades do dia: assuntos recorrentes, leads parados, cobranças vencidas e picos fora do horário.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="fs" aria-hidden="true">
+              <div class="fs-body fs-theme">
+                <div class="fs-flip-stage">
+                  <div class="fs-flip-pane is-light">
+                    <span class="fs-flip-top"><i></i><i></i><i></i><em>app.ebot.com.br</em></span>
+                    <span class="fs-flip-minis">
+                      <span class="fs-mini"><small>Atendimentos</small><b>1.284</b></span>
+                      <span class="fs-mini"><small>Resolvidos IA</small><b>73%</b></span>
+                    </span>
+                    <span class="fs-flip-line"></span>
+                    <span class="fs-flip-line is-short"></span>
+                  </div>
+                  <div class="fs-flip-pane is-dark">
+                    <span class="fs-flip-top"><i></i><i></i><i></i><em>app.ebot.com.br</em></span>
+                    <span class="fs-flip-minis">
+                      <span class="fs-mini"><small>Atendimentos</small><b>1.284</b></span>
+                      <span class="fs-mini"><small>Resolvidos IA</small><b>73%</b></span>
+                    </span>
+                    <span class="fs-flip-line"></span>
+                    <span class="fs-flip-line is-short"></span>
+                  </div>
+                  <span class="fs-flip-switch">
+                    <iconify-icon icon="ph:sun"></iconify-icon>
+                    <i class="fs-flip-thumb"></i>
+                    <iconify-icon icon="ph:moon"></iconify-icon>
+                  </span>
+                </div>
+                <div class="fs-acc"><i style="--c:#9abc1e"></i><i style="--c:#25D366"></i><i style="--c:#1D9BF0"></i><i style="--c:#F2793D"></i></div>
+              </div>
+            </div>
+            <h3>Tema e aparência <span class="feature-flag feature-flag--inline">Novo</span></h3><p>Alterne entre claro e escuro, escolha o acento de cor, densidade e cantos — cada equipe configura o painel do seu jeito.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= CONHEÇA O SISTEMA (DEMO INTERATIVA) ======================= -->
+    <section class="section surface-grid" id="tour">
+      <div class="container">
+        <div class="tour-head reveal">
+          <span class="section-eyebrow">Conheça o sistema</span>
+          <h2 class="section-heading h2">Navegue pelas telas do painel como se estivesse dentro.</h2>
+          <p class="section-lead">Clique nas abas para explorar cada módulo. Tudo abaixo é interativo: troque de tela, arraste cards, abra conversas e alterne entre claro e escuro.</p>
+        </div>
+
+        <div class="tour-tabs reveal" role="tablist" aria-label="Módulos do sistema">
+          <button class="tour-tab is-active" role="tab" aria-selected="true" data-tour-tab="dash"><iconify-icon icon="ph:squares-four" aria-hidden="true"></iconify-icon>Dashboard</button>
+          <button class="tour-tab" role="tab" aria-selected="false" data-tour-tab="atend"><iconify-icon icon="ph:chat-circle-dots" aria-hidden="true"></iconify-icon>Atendimentos</button>
+          <button class="tour-tab" role="tab" aria-selected="false" data-tour-tab="kanban"><iconify-icon icon="ph:kanban" aria-hidden="true"></iconify-icon>Kanban</button>
+          <button class="tour-tab" role="tab" aria-selected="false" data-tour-tab="crm"><iconify-icon icon="ph:users-three" aria-hidden="true"></iconify-icon>CRM</button>
+          <button class="tour-tab" role="tab" aria-selected="false" data-tour-tab="flow"><iconify-icon icon="ph:flow-arrow" aria-hidden="true"></iconify-icon>Automações</button>
+        </div>
+
+        <div class="tour-frame reveal">
+          <div class="dm-browser tour-chrome" aria-hidden="true">
+            <i></i><i></i><i></i>
+            <span class="dm-url">app.ebot.com.br/painel</span>
+            <span class="dm-browser-tag">Demo interativa</span>
+          </div>
+          <div class="ebot-demo" id="tourDemo" data-theme="light">
+            <div class="tour-app">
+              <!-- ============ sidebar ============ -->
+              <aside class="dm-side">
+                <div class="dm-side-head">
+                  <span class="dm-side-logo"><img src="./assets/images/logos_ebot/ebot_panel/SVG/Icone_panel_black.svg" alt="Ê-Bot"></span>
+                  <span>
+                    <strong>Ê-Bot Panel</strong>
+                    <span>Atendimento &amp; Vendas</span>
+                  </span>
+                </div>
+
+                <div class="dm-nav" role="tablist" aria-label="Menu do painel">
+                  <button class="dm-nav-item is-active" data-tour-tab="dash" role="tab" aria-selected="true"><iconify-icon icon="ph:squares-four" aria-hidden="true"></iconify-icon><span>Dashboard</span></button>
+                  <button class="dm-nav-item" data-tour-tab="atend" role="tab" aria-selected="false"><iconify-icon icon="ph:chat-circle-dots" aria-hidden="true"></iconify-icon><span>Atendimentos</span><b class="dm-badge">24</b></button>
+                  <button class="dm-nav-item" data-tour-tab="kanban" role="tab" aria-selected="false"><iconify-icon icon="ph:kanban" aria-hidden="true"></iconify-icon><span>Kanban SDR</span><b class="dm-badge">18</b></button>
+                  <button class="dm-nav-item" data-tour-tab="crm" role="tab" aria-selected="false"><iconify-icon icon="ph:users-three" aria-hidden="true"></iconify-icon><span>CRM</span></button>
+                  <button class="dm-nav-item" data-tour-tab="flow" role="tab" aria-selected="false"><iconify-icon icon="ph:flow-arrow" aria-hidden="true"></iconify-icon><span>Automações</span></button>
+                </div>
+
+                <div class="dm-group-label">Gestão</div>
+                <div class="dm-nav">
+                  <button class="dm-nav-item" disabled><iconify-icon icon="ph:chart-line-up" aria-hidden="true"></iconify-icon><span>Relatórios</span></button>
+                  <button class="dm-nav-item" disabled><iconify-icon icon="ph:gear-six" aria-hidden="true"></iconify-icon><span>Configurações</span></button>
+                  <button class="dm-nav-item" disabled><iconify-icon icon="ph:plug" aria-hidden="true"></iconify-icon><span>Integrações</span></button>
+                </div>
+
+                <div class="dm-side-foot">
+                  <strong><iconify-icon icon="ph:shield-check" aria-hidden="true"></iconify-icon>Sistema online</strong>
+                  <p>Resposta média de 1,4 s. A IA resolveu <b>74%</b> dos contatos hoje.</p>
+                </div>
+              </aside>
+
+              <!-- ============ work ============ -->
+              <div class="dm-work">
+                <header class="dm-top">
+                  <div class="dm-company">
+                    <b>Painel</b>
+                    <strong>Órbita Telecom</strong>
+                  </div>
+                  <div class="dm-search">
+                    <iconify-icon icon="ph:magnifying-glass" aria-hidden="true"></iconify-icon>
+                    <span>Buscar cliente, ticket ou conversa…</span>
+                  </div>
+                  <span class="dm-chip dm-chip--wa"><i class="dm-dot"></i>WhatsApp conectado</span>
+                  <span class="dm-chip dm-chip--ai"><i class="dm-dot"></i>IA ativa</span>
+                  <button class="dm-iconbtn" id="dmTheme" type="button" aria-label="Alternar tema claro e escuro"><iconify-icon icon="ph:moon" aria-hidden="true"></iconify-icon></button>
+                  <span class="dm-user"><span class="dm-avatar dm-avatar--dark">RS</span><span>Rita Souza</span></span>
+                </header>
+
+                <div class="dm-scroll" id="tourScreens">
+
+                  <!-- ===================== DASHBOARD ===================== -->
+                  <section class="dm-screen is-active" data-screen="dash" role="tabpanel" aria-label="Dashboard">
+                    <div class="dm-dash-head">
+                      <div>
+                        <span class="dm-eyebrow">Visão geral</span>
+                        <h2>Bom dia, Rita</h2>
+                        <p>Acompanhe a operação em tempo real: atendimentos, IA, agenda e vendas em um só lugar.</p>
+                      </div>
+                      <div class="dm-seg" data-dash-seg>
+                        <button type="button" class="is-active" data-set="0">Hoje</button>
+                        <button type="button" data-set="1">Semana</button>
+                        <button type="button" data-set="2">Mês</button>
+                      </div>
+                    </div>
+
+                    <div class="dm-kpis">
+                      <article class="dm-kpi">
+                        <div class="dm-kpi-top">
+                          <span class="dm-kpi-ico"><iconify-icon icon="ph:chat-circle-dots" aria-hidden="true"></iconify-icon></span>
+                          <span class="dm-kpi-delta" data-set="0">+18%</span>
+                          <span class="dm-kpi-delta" data-set="1" hidden>+12%</span>
+                          <span class="dm-kpi-delta" data-set="2" hidden>+24%</span>
+                        </div>
+                        <p class="dm-kpi-title">Atendimentos</p>
+                        <p class="dm-kpi-value"><span class="dm-set" data-set="0" data-count="1284">1.284</span><span class="dm-set" data-set="1" data-count="8940" hidden>8.940</span><span class="dm-set" data-set="2" data-count="34270" hidden>34.270</span></p>
+                        <p class="dm-kpi-sub">no período</p>
+                      </article>
+                      <article class="dm-kpi">
+                        <div class="dm-kpi-top">
+                          <span class="dm-kpi-ico"><iconify-icon icon="ph:robot" aria-hidden="true"></iconify-icon></span>
+                          <span class="dm-kpi-delta" data-set="0">+12%</span>
+                          <span class="dm-kpi-delta" data-set="1" hidden>+8%</span>
+                          <span class="dm-kpi-delta" data-set="2" hidden>+15%</span>
+                        </div>
+                        <p class="dm-kpi-title">Resolvidos pela IA</p>
+                        <p class="dm-kpi-value"><span class="dm-set" data-set="0" data-count="73">73</span><span class="dm-set" data-set="1" data-count="71" hidden>71</span><span class="dm-set" data-set="2" data-count="76" hidden>76</span><em>%</em></p>
+                        <p class="dm-kpi-sub">sem humano</p>
+                      </article>
+                      <article class="dm-kpi">
+                        <div class="dm-kpi-top">
+                          <span class="dm-kpi-ico"><iconify-icon icon="ph:sparkle" aria-hidden="true"></iconify-icon></span>
+                          <span class="dm-kpi-delta" data-set="0">+32%</span>
+                          <span class="dm-kpi-delta" data-set="1" hidden>+21%</span>
+                          <span class="dm-kpi-delta" data-set="2" hidden>+41%</span>
+                        </div>
+                        <p class="dm-kpi-title">Leads qualificados</p>
+                        <p class="dm-kpi-value"><span class="dm-set" data-set="0" data-count="186">186</span><span class="dm-set" data-set="1" data-count="1142" hidden>1.142</span><span class="dm-set" data-set="2" data-count="4318" hidden>4.318</span></p>
+                        <p class="dm-kpi-sub">triagem da IA</p>
+                      </article>
+                      <article class="dm-kpi">
+                        <div class="dm-kpi-top">
+                          <span class="dm-kpi-ico"><iconify-icon icon="ph:timer" aria-hidden="true"></iconify-icon></span>
+                          <span class="dm-kpi-delta is-down" data-set="0">-34%</span>
+                          <span class="dm-kpi-delta is-down" data-set="1" hidden>-28%</span>
+                          <span class="dm-kpi-delta is-down" data-set="2" hidden>-46%</span>
+                        </div>
+                        <p class="dm-kpi-title">Tempo médio de resposta</p>
+                        <p class="dm-kpi-value"><span class="dm-set" data-set="0" data-count="18">18</span><span class="dm-set" data-set="1" data-count="21" hidden>21</span><span class="dm-set" data-set="2" data-count="16" hidden>16</span><em>s</em></p>
+                        <p class="dm-kpi-sub">primeira resposta</p>
+                      </article>
+                    </div>
+
+                    <div class="dm-grid-2">
+                      <article class="dm-card dm-chart-card">
+                        <div class="dm-card-head">
+                          <div>
+                            <h3>Fluxo por hora</h3>
+                            <p>Volume de conversas, resoluções da IA e transferências para humanos.</p>
+                          </div>
+                          <div class="dm-chart-tools">
+                            <button type="button" class="is-active" data-series="total"><iconify-icon icon="ph:circle" aria-hidden="true"></iconify-icon>Total</button>
+                            <button type="button" class="is-active" data-series="ai"><iconify-icon icon="ph:robot" aria-hidden="true"></iconify-icon>IA</button>
+                            <button type="button" class="is-active" data-series="human"><iconify-icon icon="ph:user" aria-hidden="true"></iconify-icon>Humano</button>
+                          </div>
+                        </div>
+                        <div class="dm-chart-box">
+                          <svg data-dm-chart="tour" viewBox="0 0 720 220" preserveAspectRatio="none" aria-hidden="true"></svg>
+                        </div>
+                        <div class="dm-callout">Pico entre <b>18h e 21h</b>. A IA resolveu <b>76%</b> das conversas fora do horário comercial.</div>
+                      </article>
+
+                      <article class="dm-card">
+                        <div class="dm-card-head">
+                          <div>
+                            <h3>Operação em tempo real</h3>
+                            <p>O que exige atenção da equipe agora.</p>
+                          </div>
+                          <span class="dm-live-badge"><iconify-icon icon="ph:activity" aria-hidden="true"></iconify-icon>Agora</span>
+                        </div>
+                        <div class="dm-tiles">
+                          <div class="dm-tile"><b>17</b><span>Atendimentos ativos</span><small>+3 nos últimos 15 min</small></div>
+                          <div class="dm-tile"><b>06</b><span>Aguardando fila</span><small>Comercial 3 · Suporte 2</small></div>
+                          <div class="dm-tile"><b>04</b><span>Leads sem responsável</span><small>entraram nas últimas 2h</small></div>
+                          <div class="dm-tile"><b>42</b><span>IA em operação</span><small>conversas simultâneas</small></div>
+                        </div>
+                        <div class="dm-foot-note"><span><i></i>Última leitura há 8 segundos</span></div>
+                      </article>
+                    </div>
+
+                    <article class="dm-card">
+                      <div class="dm-card-head">
+                        <div>
+                          <h3>Conversas recentes</h3>
+                          <p>Últimos atendimentos com contexto de canal e resolução.</p>
+                        </div>
+                        <span class="dm-pill dm-pill--info"><iconify-icon icon="ph:chat-teardrop-text" aria-hidden="true"></iconify-icon>5 novas</span>
+                      </div>
+                      <div class="dm-conv">
+                        <button class="dm-conv-row" type="button">
+                          <span class="dm-avatar">AP</span>
+                          <span><strong>Ana Paula</strong><small><iconify-icon icon="ph:paper-plane-tilt" aria-hidden="true"></iconify-icon>orçamento aprovado</small></span>
+                          <span class="dm-conv-meta"><span class="dm-pill dm-pill--success">IA resolveu</span><small>há 2 min</small></span>
+                        </button>
+                        <button class="dm-conv-row" type="button">
+                          <span class="dm-avatar">MS</span>
+                          <span><strong>Marcos Silva</strong><small><iconify-icon icon="ph:paper-plane-tilt" aria-hidden="true"></iconify-icon>dúvida sobre contrato de frota</small></span>
+                          <span class="dm-conv-meta"><span class="dm-pill dm-pill--warning">humano assumiu</span><small>há 6 min</small></span>
+                        </button>
+                        <button class="dm-conv-row" type="button">
+                          <span class="dm-avatar">FL</span>
+                          <span><strong>Fernanda Lima</strong><small><iconify-icon icon="ph:paper-plane-tilt" aria-hidden="true"></iconify-icon>proposta enviada</small></span>
+                          <span class="dm-conv-meta"><span class="dm-pill dm-pill--info">resolvido por IA</span><small>há 9 min</small></span>
+                        </button>
+                      </div>
+                    </article>
+                  </section>
+
+                  <!-- ===================== ATENDIMENTOS ===================== -->
+                  <section class="dm-screen" data-screen="atend" role="tabpanel" aria-label="Atendimentos" hidden>
+                    <div class="dm-pagehead">
+                      <div>
+                        <span class="dm-eyebrow">Multiatendimento</span>
+                        <h2>Atendimentos</h2>
+                        <p>Fila única por setor, com histórico completo e transferência sem perder o contexto.</p>
+                      </div>
+                      <div class="dm-pagehead-actions">
+                        <span class="dm-pill dm-pill--success"><iconify-icon icon="ph:radio" aria-hidden="true"></iconify-icon>Fila ao vivo</span>
+                        <span class="dm-btn dm-btn--ghost dm-btn--sm"><iconify-icon icon="ph:funnel" aria-hidden="true"></iconify-icon>Filtrar</span>
+                        <span class="dm-btn dm-btn--primary dm-btn--sm"><iconify-icon icon="ph:user-plus" aria-hidden="true"></iconify-icon>Novo atendimento</span>
+                      </div>
+                    </div>
+
+                    <div class="dm-bar">
+                      <span class="dm-ico"><iconify-icon icon="ph:magnifying-glass" aria-hidden="true"></iconify-icon></span>
+                      <span class="dm-filter">Setor: <b>Todos</b></span>
+                      <span class="dm-filter">Responsável: <b>Todos</b></span>
+                      <span class="dm-filter">Canal: <b>WhatsApp</b></span>
+                      <span class="dm-spacer"></span>
+                      <span class="dm-pill dm-pill--info"><iconify-icon icon="ph:sort-ascending" aria-hidden="true"></iconify-icon>Mais antigo primeiro</span>
+                    </div>
+
+                    <div class="dm-queue-grid">
+                      <div class="dm-panel dm-panel--queue">
+                        <div class="dm-panel-head">
+                          <strong>Fila de atendimento</strong>
+                          <span>24 conversas · 6 aguardando humano</span>
+                          <div class="dm-panel-search"><iconify-icon icon="ph:magnifying-glass" aria-hidden="true"></iconify-icon>Buscar na fila…</div>
+                        </div>
+                        <div class="dm-queue-list" id="dmQueue">
+                          <button class="dm-qrow is-active" type="button" data-ticket="AT-1101">
+                            <span class="dm-avatar">AP</span>
+                            <span>
+                              <span class="dm-qrow-top"><strong>Ana Paula</strong><small>10:42</small></span>
+                              <span class="dm-qrow-msg">Oi! Consigo antecipar a instalação para esta semana?</span>
+                              <span class="dm-qrow-tags"><span class="dm-tag-mini dm-tag-mini--ia"><iconify-icon icon="ph:robot" aria-hidden="true"></iconify-icon>IA</span><span class="dm-tag-mini">Comercial</span><span class="dm-unread">3</span></span>
+                            </span>
+                          </button>
+                          <button class="dm-qrow" type="button" data-ticket="AT-1100">
+                            <span class="dm-avatar">MS</span>
+                            <span>
+                              <span class="dm-qrow-top"><strong>Marcos Silva</strong><small>10:38</small></span>
+                              <span class="dm-qrow-msg">Preciso do contrato de frota com 12 veículos, consegue enviar?</span>
+                              <span class="dm-qrow-tags"><span class="dm-tag-mini dm-tag-mini--human"><iconify-icon icon="ph:user" aria-hidden="true"></iconify-icon>humano</span><span class="dm-tag-mini">Frota</span></span>
+                            </span>
+                          </button>
+                          <button class="dm-qrow" type="button" data-ticket="AT-1098">
+                            <span class="dm-avatar">CR</span>
+                            <span>
+                              <span class="dm-qrow-top"><strong>Camila Rocha</strong><small>10:31</small></span>
+                              <span class="dm-qrow-msg">A segunda via da nota fiscal chegou no meu e-mail?</span>
+                              <span class="dm-qrow-tags"><span class="dm-tag-mini dm-tag-mini--ia"><iconify-icon icon="ph:robot" aria-hidden="true"></iconify-icon>IA</span><span class="dm-tag-mini">Financeiro</span></span>
+                            </span>
+                          </button>
+                          <button class="dm-qrow" type="button" data-ticket="AT-1096">
+                            <span class="dm-avatar">RL</span>
+                            <span>
+                              <span class="dm-qrow-top"><strong>Rafael Lima</strong><small>10:24</small></span>
+                              <span class="dm-qrow-msg">Quero migrar meu plano para o time com 30 usuários.</span>
+                              <span class="dm-qrow-tags"><span class="dm-tag-mini">Renegociação</span><span class="dm-tag-mini dm-tag-mini--human"><iconify-icon icon="ph:user" aria-hidden="true"></iconify-icon>humano</span></span>
+                            </span>
+                          </button>
+                          <button class="dm-qrow" type="button" data-ticket="AT-1094">
+                            <span class="dm-avatar">JT</span>
+                            <span>
+                              <span class="dm-qrow-top"><strong>Juliana Tavares</strong><small>10:17</small></span>
+                              <span class="dm-qrow-msg">Meu agendamento de amanhã ainda está confirmado?</span>
+                              <span class="dm-qrow-tags"><span class="dm-tag-mini dm-tag-mini--ia"><iconify-icon icon="ph:robot" aria-hidden="true"></iconify-icon>IA</span><span class="dm-tag-mini">Agenda</span></span>
+                            </span>
+                          </button>
+                          <button class="dm-qrow" type="button" data-ticket="AT-1086">
+                            <span class="dm-avatar">BO</span>
+                            <span>
+                              <span class="dm-qrow-top"><strong>Bruno Oliveira</strong><small>09:58</small></span>
+                              <span class="dm-qrow-msg">O pagamento via boleto ainda está pendente por aqui?</span>
+                              <span class="dm-qrow-tags"><span class="dm-tag-mini">Financeiro</span><span class="dm-unread">1</span></span>
+                            </span>
+                          </button>
+                        </div>
+                      </div>
+
+                      <div class="dm-panel dm-panel--chat">
+                        <div class="dm-chat-top">
+                          <div class="dm-chat-id">
+                            <span class="dm-avatar" id="dmChatAvatar">AP</span>
+                            <span>
+                              <strong id="dmChatName">Ana Paula</strong>
+                              <small><iconify-icon icon="ph:whatsapp-logo" aria-hidden="true"></iconify-icon><span id="dmChatChannel">WhatsApp · +55 11 98842-3170</span></small>
+                            </span>
+                          </div>
+                          <div class="dm-chat-actions">
+                            <button class="dm-iconbtn" type="button" aria-label="Transferir"><iconify-icon icon="ph:arrows-left-right" aria-hidden="true"></iconify-icon></button>
+                            <button class="dm-iconbtn" type="button" aria-label="Resolver"><iconify-icon icon="ph:check-circle" aria-hidden="true"></iconify-icon></button>
+                            <button class="dm-iconbtn" type="button" aria-label="Mais opções"><iconify-icon icon="ph:dots-three" aria-hidden="true"></iconify-icon></button>
+                          </div>
+                        </div>
+                        <div class="dm-chat-meta">
+                          <span class="dm-left">
+                            <span class="dm-pill dm-pill--info" id="dmChatTicket">AT-1101</span>
+                            <span class="dm-pill dm-pill--neutral">Setor: Comercial</span>
+                            <span class="dm-pill dm-pill--warning">SLA 02:14</span>
+                          </span>
+                          <span>Responsável: <b>Rita Souza</b></span>
+                        </div>
+                        <div class="dm-chat-body" id="dmChatBody">
+                          <span class="dm-day">Hoje</span>
+                          <div class="dm-msg dm-msg--client">Oi! Vi o plano de fibra no site e queria saber se consigo antecipar a instalação.<span class="dm-time">10:41</span></div>
+                          <div class="dm-msg dm-msg--ai"><span class="dm-who"><iconify-icon icon="ph:robot" aria-hidden="true"></iconify-icon>Ê-Bot · IA</span>Olá, Ana! Consigo verificar a agenda agora. Qual o seu CEP?<span class="dm-time">10:41</span></div>
+                          <div class="dm-msg dm-msg--client">04171-030, aqui na Vila Mariana.<span class="dm-time">10:42</span></div>
+                          <div class="dm-msg dm-msg--ai"><span class="dm-who"><iconify-icon icon="ph:robot" aria-hidden="true"></iconify-icon>Ê-Bot · IA</span>Temos janela na quinta às 14h. Confirma que quer antecipar para esse horário?<span class="dm-time">10:42</span></div>
+                          <div class="dm-typing"><i></i><i></i><i></i></div>
+                        </div>
+                        <div class="dm-composer">
+                          <div class="dm-quick" id="dmQuick">
+                            <button class="dm-iconbtn" type="button" aria-label="Respostas rápidas" aria-expanded="false"><iconify-icon icon="ph:lightning" aria-hidden="true"></iconify-icon></button>
+                            <div class="dm-quick-list" role="menu">
+                              <b>Respostas rápidas</b>
+                              <button type="button" role="menuitem">Confirmar agendamento</button>
+                              <button type="button" role="menuitem">Enviar proposta</button>
+                              <button type="button" role="menuitem">Transferir para humano</button>
+                              <button type="button" role="menuitem">Encerrar atendimento</button>
+                            </div>
+                          </div>
+                          <span class="dm-input">Escreva uma mensagem…</span>
+                          <button class="dm-send" type="button" aria-label="Enviar"><iconify-icon icon="ph:paper-plane-tilt" aria-hidden="true"></iconify-icon></button>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+
+                  <!-- ===================== KANBAN ===================== -->
+                  <section class="dm-screen" data-screen="kanban" role="tabpanel" aria-label="Kanban SDR" hidden>
+                    <div class="dm-pagehead">
+                      <div>
+                        <span class="dm-eyebrow">Funil de vendas</span>
+                        <h2>Kanban SDR</h2>
+                        <p>Arraste os cards entre as etapas. Leads entram sozinhos quando a IA identifica intenção de compra.</p>
+                      </div>
+                      <div class="dm-pagehead-actions">
+                        <span class="dm-pill dm-pill--info"><iconify-icon icon="ph:chart-bar" aria-hidden="true"></iconify-icon>Conversão do mês: <b>28%</b></span>
+                        <span class="dm-btn dm-btn--ghost dm-btn--sm"><iconify-icon icon="ph:funnel" aria-hidden="true"></iconify-icon>Etapa</span>
+                        <span class="dm-btn dm-btn--primary dm-btn--sm"><iconify-icon icon="ph:plus" aria-hidden="true"></iconify-icon>Novo lead</span>
+                      </div>
+                    </div>
+
+                    <div class="dm-board-note" id="dmKanbanNote"><iconify-icon icon="ph:check-circle" aria-hidden="true"></iconify-icon><span>Card movido. O responsável foi notificado e o SLA recomeçou.</span></div>
+
+                    <div class="dm-board-wrap">
+                      <div class="dm-board" id="dmKanban">
+
+                        <div class="dm-col" data-col="Entrada" style="border-color: rgba(14,122,62,.32); background: rgba(14,122,62,.07);">
+                          <div class="dm-col-head">
+                            <i class="dm-col-dot" style="background:#0E7A3E"></i>
+                            <div><h4>Novo</h4><p>Entrada</p></div>
+                            <span class="dm-col-count" style="background:rgba(14,122,62,.15); color:#0E7A3E">3</span>
+                          </div>
+                          <article class="dm-kanban-card" draggable="true" style="border-color: rgba(14,122,62,.3);">
+                            <div class="dm-kanban-card-top"><span class="dm-id">#LD-2418</span><span class="dm-cardtag" style="background:rgba(14,122,62,.14); color:#0E7A3E;">novo</span></div>
+                            <h5>Fibra 500 Mega residencial</h5>
+                            <p>Entrou pelo WhatsApp perguntando prazo de instalação.</p>
+                            <span class="dm-client"><iconify-icon icon="ph:user" aria-hidden="true"></iconify-icon>Ana Paula</span>
+                            <div class="dm-kanban-card-foot"><span class="dm-due"><iconify-icon icon="ph:calendar-blank" aria-hidden="true"></iconify-icon>Hoje</span><span class="dm-avatar" style="width:24px;height:24px;border-radius:8px;font-size:.58rem;">RS</span></div>
+                          </article>
+                          <article class="dm-kanban-card" draggable="true" style="border-color: rgba(14,122,62,.3);">
+                            <div class="dm-kanban-card-top"><span class="dm-id">#LD-2417</span><span class="dm-cardtag" style="background:rgba(14,122,62,.14); color:#0E7A3E;">novo</span></div>
+                            <h5>Plano empresa 30 usuários</h5>
+                            <p>Migração solicitada após visita ao site.</p>
+                            <span class="dm-client"><iconify-icon icon="ph:user" aria-hidden="true"></iconify-icon>Rafael Lima</span>
+                            <div class="dm-kanban-card-foot"><span class="dm-due"><iconify-icon icon="ph:calendar-blank" aria-hidden="true"></iconify-icon>Hoje</span><span class="dm-avatar" style="width:24px;height:24px;border-radius:8px;font-size:.58rem;">TT</span></div>
+                          </article>
+                          <article class="dm-kanban-card" draggable="true" style="border-color: rgba(14,122,62,.3);">
+                            <div class="dm-kanban-card-top"><span class="dm-id">#LD-2415</span><span class="dm-cardtag" style="background:rgba(14,122,62,.14); color:#0E7A3E;">novo</span></div>
+                            <h5>Contrato de frota · 12 veículos</h5>
+                            <p>Pediu proposta com valores por volume.</p>
+                            <span class="dm-client"><iconify-icon icon="ph:user" aria-hidden="true"></iconify-icon>Marcos Silva</span>
+                            <div class="dm-kanban-card-foot"><span class="dm-due is-today"><iconify-icon icon="ph:alarm" aria-hidden="true"></iconify-icon>vence 18h</span><span class="dm-avatar" style="width:24px;height:24px;border-radius:8px;font-size:.58rem;">RS</span></div>
+                          </article>
+                        </div>
+
+                        <div class="dm-col" data-col="Em atendimento" style="border-color: rgba(201,127,18,.32); background: rgba(201,127,18,.07);">
+                          <div class="dm-col-head">
+                            <i class="dm-col-dot" style="background:#C97F12"></i>
+                            <div><h4>Em atendimento</h4><p>Equipe atendendo</p></div>
+                            <span class="dm-col-count" style="background:rgba(201,127,18,.15); color:#C97F12;">2</span>
+                          </div>
+                          <article class="dm-kanban-card" draggable="true" style="border-color: rgba(201,127,18,.3);">
+                            <div class="dm-kanban-card-top"><span class="dm-id">#LD-2411</span><span class="dm-cardtag" style="background:rgba(201,127,18,.14); color:#C97F12;">quente</span></div>
+                            <h5>Renovalia energia · 4 unidades</h5>
+                            <p>Reunião de diagnóstico agendada com o comprador.</p>
+                            <span class="dm-client"><iconify-icon icon="ph:user" aria-hidden="true"></iconify-icon>Paula Mendes</span>
+                            <div class="dm-kanban-card-foot"><span class="dm-due"><iconify-icon icon="ph:calendar-blank" aria-hidden="true"></iconify-icon>qui, 14h</span><span class="dm-avatar" style="width:24px;height:24px;border-radius:8px;font-size:.58rem;">TT</span></div>
+                          </article>
+                          <article class="dm-kanban-card" draggable="true" style="border-color: rgba(201,127,18,.3);">
+                            <div class="dm-kanban-card-top"><span class="dm-id">#LD-2406</span><span class="dm-cardtag" style="background:rgba(201,127,18,.14); color:#C97F12;">quente</span></div>
+                            <h5>Suporte premium anual</h5>
+                            <p>Aguardando retorno do setor de TI do cliente.</p>
+                            <span class="dm-client"><iconify-icon icon="ph:user" aria-hidden="true"></iconify-icon>Camila Rocha</span>
+                            <div class="dm-kanban-card-foot"><span class="dm-due"><iconify-icon icon="ph:calendar-blank" aria-hidden="true"></iconify-icon>sex, 09h</span><span class="dm-avatar" style="width:24px;height:24px;border-radius:8px;font-size:.58rem;">RS</span></div>
+                          </article>
+                        </div>
+
+                        <div class="dm-col" data-col="Aguardando" style="border-color: rgba(143,169,180,.35); background: rgba(143,169,180,.09);">
+                          <div class="dm-col-head">
+                            <i class="dm-col-dot" style="background:#8FA9B4"></i>
+                            <div><h4>Aguardando</h4><p>Resposta do cliente</p></div>
+                            <span class="dm-col-count" style="background:rgba(143,169,180,.2); color:#5D737E;">2</span>
+                          </div>
+                          <article class="dm-kanban-card" draggable="true" style="border-color: rgba(143,169,180,.4);">
+                            <div class="dm-kanban-card-top"><span class="dm-id">#LD-2398</span><span class="dm-cardtag" style="background:rgba(143,169,180,.2); color:#5D737E;">follow-up</span></div>
+                            <h5>Upgrade de franquia</h5>
+                            <p>Proposta enviada há 2 dias, sem resposta.</p>
+                            <span class="dm-client"><iconify-icon icon="ph:user" aria-hidden="true"></iconify-icon>Bruno Oliveira</span>
+                            <div class="dm-kanban-card-foot"><span class="dm-due"><iconify-icon icon="ph:clock" aria-hidden="true"></iconify-icon>há 2 dias</span><span class="dm-avatar" style="width:24px;height:24px;border-radius:8px;font-size:.58rem;">TT</span></div>
+                          </article>
+                          <article class="dm-kanban-card" draggable="true" style="border-color: rgba(143,169,180,.4);">
+                            <div class="dm-kanban-card-top"><span class="dm-id">#LD-2394</span><span class="dm-cardtag" style="background:rgba(143,169,180,.2); color:#5D737E;">follow-up</span></div>
+                            <h5>Treinamento da equipe</h5>
+                            <p>Cliente pediu referência de outros casos.</p>
+                            <span class="dm-client"><iconify-icon icon="ph:user" aria-hidden="true"></iconify-icon>Juliana Tavares</span>
+                            <div class="dm-kanban-card-foot"><span class="dm-due"><iconify-icon icon="ph:clock" aria-hidden="true"></iconify-icon>há 4 dias</span><span class="dm-avatar" style="width:24px;height:24px;border-radius:8px;font-size:.58rem;">RS</span></div>
+                          </article>
+                        </div>
+
+                        <div class="dm-col" data-col="Agendado" style="border-color: rgba(93,115,126,.32); background: rgba(93,115,126,.08);">
+                          <div class="dm-col-head">
+                            <i class="dm-col-dot" style="background:#5D737E"></i>
+                            <div><h4>Agendado</h4><p>Reunião marcada</p></div>
+                            <span class="dm-col-count" style="background:rgba(93,115,126,.16); color:#5D737E;">1</span>
+                          </div>
+                          <article class="dm-kanban-card" draggable="true" style="border-color: rgba(93,115,126,.3);">
+                            <div class="dm-kanban-card-top"><span class="dm-id">#LD-2387</span><span class="dm-cardtag" style="background:rgba(93,115,126,.16); color:#5D737E;">demo</span></div>
+                            <h5>Demonstração ao vivo</h5>
+                            <p>Agendada pelo robô para amanhã às 10h.</p>
+                            <span class="dm-client"><iconify-icon icon="ph:user" aria-hidden="true"></iconify-icon>Fernanda Lima</span>
+                            <div class="dm-kanban-card-foot"><span class="dm-due"><iconify-icon icon="ph:video-camera" aria-hidden="true"></iconify-icon>amanhã, 10h</span><span class="dm-avatar" style="width:24px;height:24px;border-radius:8px;font-size:.58rem;">TT</span></div>
+                          </article>
+                        </div>
+
+                        <div class="dm-col" data-col="Em acompanhamento" style="border-color: rgba(29,168,81,.32); background: rgba(29,168,81,.08);">
+                          <div class="dm-col-head">
+                            <i class="dm-col-dot" style="background:#1DA851"></i>
+                            <div><h4>Em acompanhamento</h4><p>Pós-venda</p></div>
+                            <span class="dm-col-count" style="background:rgba(29,168,81,.15); color:#0D7330;">2</span>
+                          </div>
+                          <article class="dm-kanban-card" draggable="true" style="border-color: rgba(29,168,81,.3);">
+                            <div class="dm-kanban-card-top"><span class="dm-id">#LD-2371</span><span class="dm-cardtag" style="background:rgba(29,168,81,.14); color:#0D7330;">onboarding</span></div>
+                            <h5>Implantação fase 1</h5>
+                            <p>Migração de 42 usuários concluída na terça.</p>
+                            <span class="dm-client"><iconify-icon icon="ph:user" aria-hidden="true"></iconify-icon>Vanderlei Comércio</span>
+                            <div class="dm-kanban-card-foot"><span class="dm-due"><iconify-icon icon="ph:calendar-blank" aria-hidden="true"></iconify-icon>seg, 09h</span><span class="dm-avatar" style="width:24px;height:24px;border-radius:8px;font-size:.58rem;">RS</span></div>
+                          </article>
+                          <article class="dm-kanban-card" draggable="true" style="border-color: rgba(29,168,81,.3);">
+                            <div class="dm-kanban-card-top"><span class="dm-id">#LD-2364</span><span class="dm-cardtag" style="background:rgba(29,168,81,.14); color:#0D7330;">renovação</span></div>
+                            <h5>Renovação anual</h5>
+                            <p>Cliente satisfeito, aguardando assinatura.</p>
+                            <span class="dm-client"><iconify-icon icon="ph:user" aria-hidden="true"></iconify-icon>Órbita Telecom</span>
+                            <div class="dm-kanban-card-foot"><span class="dm-due"><iconify-icon icon="ph:calendar-blank" aria-hidden="true"></iconify-icon>30/10</span><span class="dm-avatar" style="width:24px;height:24px;border-radius:8px;font-size:.58rem;">TT</span></div>
+                          </article>
+                        </div>
+
+                        <div class="dm-col" data-col="Entrega" style="border-color: rgba(4,27,21,.3); background: rgba(4,27,21,.06);">
+                          <div class="dm-col-head">
+                            <i class="dm-col-dot" style="background:#041B15"></i>
+                            <div><h4>Concluído</h4><p>Entrega</p></div>
+                            <span class="dm-col-count" style="background:rgba(4,27,21,.1); color:#041B15;">1</span>
+                          </div>
+                          <article class="dm-kanban-card" draggable="true" style="border-color: rgba(4,27,21,.26);">
+                            <div class="dm-kanban-card-top"><span class="dm-id">#LD-2350</span><span class="dm-cardtag" style="background:rgba(4,27,21,.1); color:#041B15;">fechado</span></div>
+                            <h5>Plano fibra 1 giga</h5>
+                            <p>Contrato assinado e instalação concluída.</p>
+                            <span class="dm-client"><iconify-icon icon="ph:user" aria-hidden="true"></iconify-icon>Marina Duarte</span>
+                            <div class="dm-kanban-card-foot"><span class="dm-due"><iconify-icon icon="ph:check-circle" aria-hidden="true"></iconify-icon>ontem</span><span class="dm-avatar" style="width:24px;height:24px;border-radius:8px;font-size:.58rem;">RS</span></div>
+                          </article>
+                          <div class="dm-col-empty">Solte um card aqui para concluir a venda</div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </section>
+
+                  <!-- ===================== CRM ===================== -->
+                  <section class="dm-screen" data-screen="crm" role="tabpanel" aria-label="CRM" hidden>
+                    <div class="dm-pagehead">
+                      <div>
+                        <span class="dm-eyebrow">Gestão de relacionamento</span>
+                        <h2>CRM</h2>
+                        <p>Contas, valores em jogo e próximos passos. Clique em um card para abrir os detalhes.</p>
+                      </div>
+                      <div class="dm-pagehead-actions">
+                        <span class="dm-pill dm-pill--success"><iconify-icon icon="ph:trend-up" aria-hidden="true"></iconify-icon>R$ 384 mil em jogo</span>
+                        <span class="dm-btn dm-btn--ghost dm-btn--sm"><iconify-icon icon="ph:download-simple" aria-hidden="true"></iconify-icon>Exportar</span>
+                        <span class="dm-btn dm-btn--primary dm-btn--sm"><iconify-icon icon="ph:plus" aria-hidden="true"></iconify-icon>Nova conta</span>
+                      </div>
+                    </div>
+
+                    <div class="dm-insight-cards">
+                      <div class="dm-mini"><span class="dm-mini-label">Contas ativas</span><p class="dm-mini-value">142</p><p class="dm-mini-hint">+9 neste mês</p></div>
+                      <div class="dm-mini"><span class="dm-mini-label">Pipeline</span><p class="dm-mini-value">R$ 384k</p><p class="dm-mini-hint">6 etapas</p></div>
+                      <div class="dm-mini is-alert"><span class="dm-mini-label">Parados há 7 dias</span><p class="dm-mini-value">11</p><p class="dm-mini-hint">precisam de follow-up</p></div>
+                      <div class="dm-mini"><span class="dm-mini-label">Taxa de ganho</span><p class="dm-mini-value">32%</p><p class="dm-mini-hint">média dos últimos 90 dias</p></div>
+                      <div class="dm-mini is-danger"><span class="dm-mini-label">Perdidos no mês</span><p class="dm-mini-value">7</p><p class="dm-mini-hint">principal motivo: preço</p></div>
+                    </div>
+
+                    <div class="dm-bar">
+                      <span class="dm-ico"><iconify-icon icon="ph:users-three" aria-hidden="true"></iconify-icon></span>
+                      <span class="dm-filter">Responsável: <b>Todos</b></span>
+                      <span class="dm-filter">Segmento: <b>Todos</b></span>
+                      <span class="dm-filter">Valor: <b>&gt; R$ 5 mil</b></span>
+                      <span class="dm-spacer"></span>
+                      <span class="dm-pill dm-pill--info"><iconify-icon icon="ph:clock-countdown" aria-hidden="true"></iconify-icon>Atualizado há 40 s</span>
+                    </div>
+
+                    <div class="dm-board-wrap">
+                      <div class="dm-board">
+
+                        <div class="dm-col" style="border-color: rgba(29,168,81,.32); background: rgba(29,168,81,.07);">
+                          <div class="dm-col-head"><i class="dm-col-dot" style="background:#1DA851"></i><div><h4>Novo lead</h4><p>Chegou agora</p></div><span class="dm-col-count" style="background:rgba(29,168,81,.15); color:#0D7330;">2</span></div>
+                          <article class="dm-kanban-card dm-crm-card" tabindex="0" style="border-color: rgba(29,168,81,.3);">
+                            <div class="dm-kanban-card-top"><span class="dm-status"><i style="background:#1DA851"></i>Novo lead</span><span class="dm-value">R$ 12,4k</span></div>
+                            <h5>Vanderlei Comércio Ltda</h5>
+                            <span class="dm-company-line"><iconify-icon icon="ph:buildings" aria-hidden="true"></iconify-icon>Atacado · 120 lojas</span>
+                            <div class="dm-owner"><span class="dm-avatar">RS</span><span>Rita Souza</span></div>
+                            <span class="dm-next"><iconify-icon icon="ph:clock" aria-hidden="true"></iconify-icon>Ligar hoje às 15h</span>
+                            <div class="dm-crm-details">
+                              <div><span>Origem</span><b>WhatsApp</b></div>
+                              <div><span>Último contato</span><b>há 3 h</b></div>
+                              <div><span>Probabilidade</span><b>45%</b></div>
+                            </div>
+                            <button class="dm-crm-more" type="button">Ver detalhes</button>
+                          </article>
+                          <article class="dm-kanban-card dm-crm-card" tabindex="0" style="border-color: rgba(29,168,81,.3);">
+                            <div class="dm-kanban-card-top"><span class="dm-status"><i style="background:#1DA851"></i>Novo lead</span><span class="dm-value">R$ 6,8k</span></div>
+                            <h5>Studio Aurora</h5>
+                            <span class="dm-company-line"><iconify-icon icon="ph:buildings" aria-hidden="true"></iconify-icon>Serviços · 18 pessoas</span>
+                            <div class="dm-owner"><span class="dm-avatar">TT</span><span>Tiago Torres</span></div>
+                            <span class="dm-next"><iconify-icon icon="ph:chat-circle" aria-hidden="true"></iconify-icon>Enviar catálogo pelo WhatsApp</span>
+                            <div class="dm-crm-details">
+                              <div><span>Origem</span><b>Instagram</b></div>
+                              <div><span>Último contato</span><b>há 1 h</b></div>
+                              <div><span>Probabilidade</span><b>30%</b></div>
+                            </div>
+                            <button class="dm-crm-more" type="button">Ver detalhes</button>
+                          </article>
+                        </div>
+
+                        <div class="dm-col" style="border-color: rgba(14,122,62,.32); background: rgba(14,122,62,.07);">
+                          <div class="dm-col-head"><i class="dm-col-dot" style="background:#0E7A3E"></i><div><h4>Qualificado (IA)</h4><p>Intenção confirmada</p></div><span class="dm-col-count" style="background:rgba(14,122,62,.15); color:#0E7A3E;">2</span></div>
+                          <article class="dm-kanban-card dm-crm-card" tabindex="0" style="border-color: rgba(14,122,62,.3);">
+                            <div class="dm-kanban-card-top"><span class="dm-status"><i style="background:#0E7A3E"></i>Qualificado</span><span class="dm-value">R$ 48,0k</span></div>
+                            <h5>Renovalia Energia</h5>
+                            <span class="dm-company-line"><iconify-icon icon="ph:buildings" aria-hidden="true"></iconify-icon>Indústria · 4 unidades</span>
+                            <div class="dm-owner"><span class="dm-avatar">TT</span><span>Tiago Torres</span></div>
+                            <span class="dm-next"><iconify-icon icon="ph:video-camera" aria-hidden="true"></iconify-icon>Diagnóstico qui, 14h</span>
+                            <div class="dm-crm-details">
+                              <div><span>Origem</span><b>Indicação</b></div>
+                              <div><span>Último contato</span><b>ontem</b></div>
+                              <div><span>Probabilidade</span><b>65%</b></div>
+                            </div>
+                            <button class="dm-crm-more" type="button">Ver detalhes</button>
+                          </article>
+                          <article class="dm-kanban-card dm-crm-card" tabindex="0" style="border-color: rgba(14,122,62,.3);">
+                            <div class="dm-kanban-card-top"><span class="dm-status"><i style="background:#0E7A3E"></i>Qualificado</span><span class="dm-value">R$ 21,5k</span></div>
+                            <h5>Ponto Norte Logística</h5>
+                            <span class="dm-company-line"><iconify-icon icon="ph:buildings" aria-hidden="true"></iconify-icon>Transporte · 90 caminhões</span>
+                            <div class="dm-owner"><span class="dm-avatar">RS</span><span>Rita Souza</span></div>
+                            <span class="dm-next"><iconify-icon icon="ph:file-text" aria-hidden="true"></iconify-icon>Montar proposta de frota</span>
+                            <div class="dm-crm-details">
+                              <div><span>Origem</span><b>Site</b></div>
+                              <div><span>Último contato</span><b>há 2 dias</b></div>
+                              <div><span>Probabilidade</span><b>55%</b></div>
+                            </div>
+                            <button class="dm-crm-more" type="button">Ver detalhes</button>
+                          </article>
+                        </div>
+
+                        <div class="dm-col" style="border-color: rgba(93,115,126,.32); background: rgba(93,115,126,.08);">
+                          <div class="dm-col-head"><i class="dm-col-dot" style="background:#5D737E"></i><div><h4>Em negociação</h4><p>Proposta na mesa</p></div><span class="dm-col-count" style="background:rgba(93,115,126,.16); color:#5D737E;">2</span></div>
+                          <article class="dm-kanban-card dm-crm-card" tabindex="0" style="border-color: rgba(93,115,126,.3);">
+                            <div class="dm-kanban-card-top"><span class="dm-status"><i style="background:#5D737E"></i>Negociação</span><span class="dm-value">R$ 96,0k</span></div>
+                            <h5>Grupo Meridiano</h5>
+                            <span class="dm-company-line"><iconify-icon icon="ph:buildings" aria-hidden="true"></iconify-icon>Varejo · 12 filiais</span>
+                            <div class="dm-owner"><span class="dm-avatar">RS</span><span>Rita Souza</span></div>
+                            <span class="dm-next"><iconify-icon icon="ph:warning-circle" aria-hidden="true"></iconify-icon>Aguardando aprovação do CFO</span>
+                            <div class="dm-crm-details">
+                              <div><span>Origem</span><b>Feira do setor</b></div>
+                              <div><span>Último contato</span><b>há 5 dias</b></div>
+                              <div><span>Probabilidade</span><b>70%</b></div>
+                            </div>
+                            <button class="dm-crm-more" type="button">Ver detalhes</button>
+                          </article>
+                          <article class="dm-kanban-card dm-crm-card" tabindex="0" style="border-color: rgba(93,115,126,.3);">
+                            <div class="dm-kanban-card-top"><span class="dm-status"><i style="background:#5D737E"></i>Negociação</span><span class="dm-value">R$ 17,2k</span></div>
+                            <h5>Clínica Horizonte</h5>
+                            <span class="dm-company-line"><iconify-icon icon="ph:buildings" aria-hidden="true"></iconify-icon>Saúde · 60 agendas</span>
+                            <div class="dm-owner"><span class="dm-avatar">TT</span><span>Tiago Torres</span></div>
+                            <span class="dm-next"><iconify-icon icon="ph:tag" aria-hidden="true"></iconify-icon>Ajustar desconto de 8%</span>
+                            <div class="dm-crm-details">
+                              <div><span>Origem</span><b>WhatsApp</b></div>
+                              <div><span>Último contato</span><b>há 3 dias</b></div>
+                              <div><span>Probabilidade</span><b>60%</b></div>
+                            </div>
+                            <button class="dm-crm-more" type="button">Ver detalhes</button>
+                          </article>
+                        </div>
+
+                        <div class="dm-col" style="border-color: rgba(143,169,180,.35); background: rgba(143,169,180,.09);">
+                          <div class="dm-col-head"><i class="dm-col-dot" style="background:#8FA9B4"></i><div><h4>Follow-up</h4><p>Parado há 7 dias</p></div><span class="dm-col-count" style="background:rgba(143,169,180,.2); color:#5D737E;">2</span></div>
+                          <article class="dm-kanban-card dm-crm-card" tabindex="0" style="border-color: rgba(143,169,180,.4);">
+                            <div class="dm-kanban-card-top"><span class="dm-status"><i style="background:#8FA9B4"></i>Follow-up</span><span class="dm-value">R$ 9,9k</span></div>
+                            <h5>Construtora Via Norte</h5>
+                            <span class="dm-company-line"><iconify-icon icon="ph:buildings" aria-hidden="true"></iconify-icon>Construção · 40 obras</span>
+                            <div class="dm-owner"><span class="dm-avatar">TT</span><span>Tiago Torres</span></div>
+                            <span class="dm-stuck"><iconify-icon icon="ph:hourglass" aria-hidden="true"></iconify-icon>9 dias sem resposta</span>
+                            <div class="dm-crm-details">
+                              <div><span>Origem</span><b>Google Ads</b></div>
+                              <div><span>Último contato</span><b>há 9 dias</b></div>
+                              <div><span>Probabilidade</span><b>25%</b></div>
+                            </div>
+                            <button class="dm-crm-more" type="button">Ver detalhes</button>
+                          </article>
+                          <article class="dm-kanban-card dm-crm-card" tabindex="0" style="border-color: rgba(143,169,180,.4);">
+                            <div class="dm-kanban-card-top"><span class="dm-status"><i style="background:#8FA9B4"></i>Follow-up</span><span class="dm-value">R$ 14,0k</span></div>
+                            <h5>Rede Bom Preço</h5>
+                            <span class="dm-company-line"><iconify-icon icon="ph:buildings" aria-hidden="true"></iconify-icon>Varejo · 22 lojas</span>
+                            <div class="dm-owner"><span class="dm-avatar">RS</span><span>Rita Souza</span></div>
+                            <span class="dm-stuck"><iconify-icon icon="ph:hourglass" aria-hidden="true"></iconify-icon>8 dias sem resposta</span>
+                            <div class="dm-crm-details">
+                              <div><span>Origem</span><b>Indicação</b></div>
+                              <div><span>Último contato</span><b>há 8 dias</b></div>
+                              <div><span>Probabilidade</span><b>35%</b></div>
+                            </div>
+                            <button class="dm-crm-more" type="button">Ver detalhes</button>
+                          </article>
+                        </div>
+
+                        <div class="dm-col" style="border-color: rgba(11,107,46,.32); background: rgba(11,107,46,.07);">
+                          <div class="dm-col-head"><i class="dm-col-dot" style="background:#0B6B2E"></i><div><h4>Ganho</h4><p>Contrato fechado</p></div><span class="dm-col-count" style="background:rgba(11,107,46,.15); color:#0B6B2E;">1</span></div>
+                          <article class="dm-kanban-card dm-crm-card" tabindex="0" style="border-color: rgba(11,107,46,.3);">
+                            <div class="dm-kanban-card-top"><span class="dm-status"><i style="background:#0B6B2E"></i>Ganho</span><span class="dm-value">R$ 64,5k</span></div>
+                            <h5>Órbita Telecom</h5>
+                            <span class="dm-company-line"><iconify-icon icon="ph:buildings" aria-hidden="true"></iconify-icon>Telecom · 300 atendentes</span>
+                            <div class="dm-owner"><span class="dm-avatar">RS</span><span>Rita Souza</span></div>
+                            <span class="dm-next"><iconify-icon icon="ph:check-circle" aria-hidden="true"></iconify-icon>Implantação concluída</span>
+                            <div class="dm-crm-details">
+                              <div><span>Origem</span><b>Indicação</b></div>
+                              <div><span>Fechado em</span><b>02/10</b></div>
+                              <div><span>Probabilidade</span><b>100%</b></div>
+                            </div>
+                            <button class="dm-crm-more" type="button">Ver detalhes</button>
+                          </article>
+                          <div class="dm-col-empty">Toda venda fechada entra aqui automaticamente</div>
+                        </div>
+
+                        <div class="dm-col" style="border-color: rgba(122,142,152,.32); background: rgba(122,142,152,.08);">
+                          <div class="dm-col-head"><i class="dm-col-dot" style="background:#7A8E98"></i><div><h4>Perdido</h4><p>Motivo registrado</p></div><span class="dm-col-count" style="background:rgba(122,142,152,.18); color:#5D737E;">1</span></div>
+                          <article class="dm-kanban-card dm-crm-card" tabindex="0" style="border-color: rgba(122,142,152,.35);">
+                            <div class="dm-kanban-card-top"><span class="dm-status"><i style="background:#7A8E98"></i>Perdido</span><span class="dm-value">R$ 18,0k</span></div>
+                            <h5>Alfa Distribuição</h5>
+                            <span class="dm-company-line"><iconify-icon icon="ph:buildings" aria-hidden="true"></iconify-icon>Distribuição · 7 centros</span>
+                            <div class="dm-owner"><span class="dm-avatar">TT</span><span>Tiago Torres</span></div>
+                            <span class="dm-next"><iconify-icon icon="ph:tag" aria-hidden="true"></iconify-icon>Motivo: preço abaixo do concorrente</span>
+                            <div class="dm-crm-details">
+                              <div><span>Origem</span><b>Site</b></div>
+                              <div><span>Perdido em</span><b>28/09</b></div>
+                              <div><span>Probabilidade</span><b>0%</b></div>
+                            </div>
+                            <button class="dm-crm-more" type="button">Ver detalhes</button>
+                          </article>
+                          <div class="dm-col-empty">Perdidos ficam disponíveis para reativação</div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </section>
+
+                  <!-- ===================== AUTOMAÇÕES ===================== -->
+                  <section class="dm-screen" data-screen="flow" role="tabpanel" aria-label="Automações" hidden>
+                    <div class="dm-pagehead">
+                      <div>
+                        <span class="dm-eyebrow">Editor de fluxo</span>
+                        <h2>Automações</h2>
+                        <p>Monte jornadas arrastando blocos. Clique em um nó para ver a configuração ao lado.</p>
+                      </div>
+                      <div class="dm-pagehead-actions">
+                        <span class="dm-pill dm-pill--success"><iconify-icon icon="ph:play-circle" aria-hidden="true"></iconify-icon>Publicado</span>
+                        <span class="dm-pill dm-pill--neutral"><iconify-icon icon="ph:clock-counter-clockwise" aria-hidden="true"></iconify-icon>Última edição há 12 min</span>
+                      </div>
+                    </div>
+
+                    <div class="dm-flow-toolbar">
+                      <div class="dm-flow-name">
+                        <span class="dm-ico" style="width:34px;height:34px;display:grid;place-items:center;border-radius:11px;background:rgba(var(--dt-primary),.1);color:rgb(var(--dt-primary));"><iconify-icon icon="ph:flow-arrow" aria-hidden="true"></iconify-icon></span>
+                        <span><strong>Confirmação de agendamento D-1</strong><small>7 passos · 1.284 execuções este mês</small></span>
+                      </div>
+                      <span class="dm-spacer"></span>
+                      <div class="dm-flow-chips">
+                        <button type="button" class="is-active">Confirmação D-1</button>
+                        <button type="button">Captura de lead</button>
+                        <button type="button">Cobrança vencida</button>
+                      </div>
+                      <span class="dm-btn dm-btn--ghost dm-btn--sm"><iconify-icon icon="ph:play" aria-hidden="true"></iconify-icon>Testar fluxo</span>
+                      <span class="dm-btn dm-btn--primary dm-btn--sm"><iconify-icon icon="ph:floppy-disk" aria-hidden="true"></iconify-icon>Publicar</span>
+                    </div>
+
+                    <div class="dm-editor">
+                      <div class="dm-canvas">
+                        <div class="dm-canvas-inner">
+                          <svg viewBox="0 0 1240 340" preserveAspectRatio="none" aria-hidden="true">
+                            <path class="dm-edge" d="M196,172 H220"></path>
+                            <path class="dm-edge" d="M396,172 H420"></path>
+                            <path class="dm-edge" d="M596,172 H620"></path>
+                            <path class="dm-edge" d="M796,172 H808 V92 H820"></path>
+                            <path class="dm-edge" d="M996,92 H1020"></path>
+                            <path class="dm-edge" d="M908,142 V252 H1020"></path>
+                          </svg>
+
+                          <button class="dm-node is-active" type="button" data-node="trigger" style="left:20px; top:130px;">
+                            <span class="dm-node-ico"><iconify-icon icon="ph:play-circle" aria-hidden="true"></iconify-icon></span>
+                            <span class="dm-node-kind" style="color:#1DA851;"><i style="background:#1DA851;"></i>Gatilho</span>
+                            <strong>D-1 do agendamento</strong>
+                            <small>Dispara 24 h antes do horário marcado</small>
+                          </button>
+
+                          <button class="dm-node" type="button" data-node="search" style="left:220px; top:130px;">
+                            <span class="dm-node-ico"><iconify-icon icon="ph:database" aria-hidden="true"></iconify-icon></span>
+                            <span class="dm-node-kind" style="color:#0E7A3E;"><i style="background:#0E7A3E;"></i>Ação</span>
+                            <strong>Buscar cliente</strong>
+                            <small>Consulta nome, telefone e histórico no CRM</small>
+                          </button>
+
+                          <button class="dm-node" type="button" data-node="message" style="left:420px; top:130px;">
+                            <span class="dm-node-ico"><iconify-icon icon="ph:whatsapp-logo" aria-hidden="true"></iconify-icon></span>
+                            <span class="dm-node-kind" style="color:#25D366;"><i style="background:#25D366;"></i>Mensagem</span>
+                            <strong>Mensagem de confirmação</strong>
+                            <small>Modelo: “Seu atendimento é amanhã às 14h”</small>
+                          </button>
+
+                          <button class="dm-node" type="button" data-node="wait" style="left:620px; top:130px;">
+                            <span class="dm-node-ico"><iconify-icon icon="ph:hourglass" aria-hidden="true"></iconify-icon></span>
+                            <span class="dm-node-kind" style="color:#5D737E;"><i style="background:#5D737E;"></i>Espera</span>
+                            <strong>Aguardar resposta</strong>
+                            <small>Janela de 2 h antes de reenviar</small>
+                          </button>
+
+                          <button class="dm-node" type="button" data-node="condition" style="left:820px; top:50px;">
+                            <span class="dm-node-ico"><iconify-icon icon="ph:git-branch" aria-hidden="true"></iconify-icon></span>
+                            <span class="dm-node-kind" style="color:#C97F12;"><i style="background:#C97F12;"></i>Condição</span>
+                            <strong>Confirmou?</strong>
+                            <small>Palavras-chave: sim, confirmo, pode ser</small>
+                          </button>
+
+                          <button class="dm-node" type="button" data-node="confirm" style="left:1020px; top:50px;">
+                            <span class="dm-node-ico"><iconify-icon icon="ph:check-circle" aria-hidden="true"></iconify-icon></span>
+                            <span class="dm-node-kind" style="color:#0B6B2E;"><i style="background:#0B6B2E;"></i>Sucesso</span>
+                            <strong>Confirmar agendamento</strong>
+                            <small>Atualiza agenda e avisa a equipe</small>
+                          </button>
+
+                          <button class="dm-node" type="button" data-node="transfer" style="left:1020px; top:210px;">
+                            <span class="dm-node-ico"><iconify-icon icon="ph:arrows-left-right" aria-hidden="true"></iconify-icon></span>
+                            <span class="dm-node-kind" style="color:#C13E3E;"><i style="background:#C13E3E;"></i>Falha</span>
+                            <strong>Transferir para atendimento</strong>
+                            <small>Envia para a fila humana com o contexto</small>
+                          </button>
+                        </div>
+                      </div>
+
+                      <aside class="dm-inspector">
+                        <article class="dm-card">
+                          <span class="dm-insp-kind" id="dmInspKind">Gatilho</span>
+                          <h4 id="dmInspTitle">D-1 do agendamento</h4>
+                          <p class="dm-insp-note" id="dmInspNote">Percorre a agenda do dia seguinte e inicia o fluxo para cada compromisso confirmado.</p>
+                          <div class="dm-field"><label id="dmInspL1">Agenda</label><span class="dm-field-box" id="dmInspF1">Consultas e visitas confirmadas</span></div>
+                          <div class="dm-field"><label id="dmInspL2">Horário da disparada</label><span class="dm-field-box" id="dmInspF2">18:00 · fuso de São Paulo</span></div>
+                          <div class="dm-field"><label id="dmInspL3">Condição</label><span class="dm-field-box" id="dmInspF3">status = confirmado</span></div>
+                          <span class="dm-btn dm-btn--ghost dm-btn--sm" style="margin-top:.35rem;"><iconify-icon icon="ph:pencil" aria-hidden="true"></iconify-icon>Editar passo</span>
+                        </article>
+
+                        <article class="dm-card">
+                          <div class="dm-card-head">
+                            <div><h3>Fluxos publicados</h3><p>3 automações ativas na conta</p></div>
+                          </div>
+                          <div class="dm-flow-list">
+                            <button class="dm-flow-item is-active" type="button">
+                              <span class="dm-flow-ico"><iconify-icon icon="ph:calendar-check" aria-hidden="true"></iconify-icon></span>
+                              <span><strong>Confirmação de agendamento D-1</strong><small>1.284 execuções · 74% confirmaram</small></span>
+                            </button>
+                            <button class="dm-flow-item" type="button">
+                              <span class="dm-flow-ico"><iconify-icon icon="ph:funnel" aria-hidden="true"></iconify-icon></span>
+                              <span><strong>Captura e qualificação de lead</strong><small>962 execuções · 41% qualificados</small></span>
+                            </button>
+                            <button class="dm-flow-item" type="button">
+                              <span class="dm-flow-ico"><iconify-icon icon="ph:currency-circle-dollar" aria-hidden="true"></iconify-icon></span>
+                              <span><strong>Cobrança de boleto vencido</strong><small>431 execuções · 62% pagaram</small></span>
+                            </button>
+                          </div>
+                        </article>
+                      </aside>
+                    </div>
+                  </section>
+
+                </div><!-- /.dm-scroll -->
+              </div><!-- /.dm-work -->
+            </div><!-- /.tour-app -->
+          </div><!-- /.ebot-demo -->
+        </div><!-- /.tour-frame -->
+
+        <div class="tour-hint reveal">
+          <span><iconify-icon icon="ph:cursor-click" aria-hidden="true"></iconify-icon>Troque de módulo pelas abas ou pelo menu lateral</span>
+          <span><iconify-icon icon="ph:hand-grabbing" aria-hidden="true"></iconify-icon>Arraste os cards do Kanban entre as etapas</span>
+          <span><iconify-icon icon="ph:chat-circle-dots" aria-hidden="true"></iconify-icon>Clique numa conversa para abri-la</span>
+          <span><iconify-icon icon="ph:moon" aria-hidden="true"></iconify-icon>Teste o tema claro e escuro</span>
+        </div>
+
+        <div class="tour-cta reveal">
+          <button class="trigger-wa-modal btn btn-primary float-hover" type="button">Quero o painel na minha empresa</button>
+          <span class="text-small" style="color: var(--muted);">Demonstração com dados fictícios — seus dados reais ficam no seu servidor.</span>
         </div>
       </div>
     </section>
@@ -1157,6 +2216,7 @@
   <script src="js/utils.js"></script>
   <script src="js/navigation.js"></script>
   <script src="js/scroll-animations.js"></script>
+  <script src="js/tour.js"></script>
   <script src="js/main.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
